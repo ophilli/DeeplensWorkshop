@@ -72,11 +72,11 @@ In the search bar, type “greengrass-hello-world” and hit Enter
 
 Choose the python blueprint and click Configure
 
-Name the function: DeepLens-sentiment-your-name
-Role: Choose an existing role
+Name the function: DeepLens-sentiment-your-name  
+Role: Choose an existing role  
 Existing Role: AWSDeepLensLambdaRole
 
-Click Create Function
+Click Create Function  
 Replace the default script with the [inference script](https://github.com/mahendrabairagi/DeeplensWorkshop/blob/master/Inference%20Lambda/inference-lambda.py)
 
 You can select the inference script, by selecting Raw in the Github page and choosing the script using ctrl+A/ cmd+A . Copy the script and paste it into the lambda function (make sure you delete the default code).
@@ -332,10 +332,10 @@ You will find your cropped faces uplaod to your S3 bucket.
 
 Go to [AWS Management console](https://console.aws.amazon.com/console/home?region=us-east-1) and search for Dynamo
 
-Click on Create Table.
+Click on Create Table.  
 
-Name of the table: recognize-emotions-your-name
-Primary key: s3key
+Name of the table: recognize-emotions-your-name  
+Primary key: s3key  
 
 Click on Create. This will create a table in your DynamoDB.
 
@@ -367,16 +367,16 @@ Choose 'Create role'
 
 The inference lambda function that you deployed earlier will upload the cropped faces to your S3. On S3 upload, this new lambda function gets triggered and runs the Rekognize Emotions API by integrating with Amazon Rekognition. 
 
-Go to [AWS Management console](https://console.aws.amazon.com/console/home?region=us-east-1) and search for Lambda
+Go to [AWS Management console](https://console.aws.amazon.com/console/home?region=us-east-1) and search for Lambda  
 
-Click 'Create function'
+Click 'Create function'  
 
-Choose 'Author from scratch'
+Choose 'Author from scratch'  
 
 Name the function: recognize-emotion-your-name.  
-Runtime: Choose Python 2.7
-Role: Choose an existing role
-Existing role: rekognizeEmotions
+Runtime: Choose Python 2.7  
+Role: Choose an existing role  
+Existing role: rekognizeEmotions  
 
 Choose Create function
 
@@ -389,13 +389,13 @@ Make sure you enter the table name you created earlier in the section highlighte
 
 Next, we need to add the event that triggers this lambda function. This will be an “S3:ObjectCreated” event that happens every time a face is uploaded to the face S3 bucket. Add S3 trigger from designer section on the left. 
 
-Configure with the following:
+Configure with the following:  
 
-Bucket name: face-detection-your-name (you created this bucket earlier)
-Event type- Object Created
-Prefix- faces/
-Filter- .jpg
-Enable trigger- ON (keep the checkbox on)
+Bucket name: face-detection-your-name (you created this bucket earlier)  
+Event type- Object Created  
+Prefix- faces/  
+Suffix- .jpg  
+Enable trigger- ON (keep the checkbox on)  
 
 Save the lambda function
 
